@@ -79,7 +79,7 @@ a {
 }
 
 .toggle input:checked ~ label {
-  background: #616161;
+  background: #0076ff;
 }
 
 .toggle input:checked ~ label .moon {

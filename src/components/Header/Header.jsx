@@ -1,30 +1,34 @@
 import Images from "../../constant/Images";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-
+import { toggleDarkMode } from "../../store/slice/DarkModeStateSlice";
+import { useDispatch } from "react-redux";
 function Header() {
-  const [darkModeState, setDarkModeState] = useState(false);
-
+  const dispatch = useDispatch();
   const toggleHandle = (e) => {
     // [true] dark mode enable
 
     if (e.target.checked) {
-      setDarkModeState(true);
+      dispatch(toggleDarkMode(true));
     }
     // [false] light mode enable
     else {
-      setDarkModeState(false);
+      dispatch(toggleDarkMode(false));
     }
   };
   return (
-    <header className="flex items-center ">
+    <header className="flex items-center">
       <div className="logo">
-        <img src={Images.logo} alt="logo" className="w-[100px] h-[90px]" />
+        <Link to="/">
+          <img src={Images.logo} alt="logo" className="w-[100px] h-[90px]" />
+        </Link>
       </div>
 
       <div className="flex list-none p-2 text-xl justify-evenly flex-1">
         <li>
           <Link to="">Skills</Link>
+        </li>
+        <li>
+          <Link to="">Project</Link>
         </li>
         <li>
           <Link to="">Work Experience</Link>
@@ -42,7 +46,7 @@ function Header() {
           <Link to="">Contact Me</Link>
         </li>
       </div>
-      <div className=" w-[150px]">
+      <div className="w-[150px]">
         <div className="toggle">
           <input type="checkbox" id="darkMode" onClick={toggleHandle} />
           <label htmlFor="darkMode">

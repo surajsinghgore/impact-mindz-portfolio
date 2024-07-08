@@ -1,24 +1,32 @@
 // src/App.js
-
-import  { useState, useMemo } from 'react';
-import { createTheme, ThemeProvider, CssBaseline, Container, Switch, Typography, Paper } from '@mui/material';
+import { useState, useMemo } from "react";
+import {
+  createTheme,
+  ThemeProvider,
+  CssBaseline,
+  Container,
+  Switch,
+  Typography,
+  Paper,
+} from "@mui/material";
 
 function Theme() {
   const [darkMode, setDarkMode] = useState(false);
 
-  const theme = useMemo(() => 
-    createTheme({
-      palette: {
-        mode: darkMode ? 'dark' : 'light',
-        background: {
-          default: darkMode ? '#000' : '#fff',
-          paper: darkMode ? '#000' : '#fff',
+  const theme = useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode: darkMode ? "dark" : "light",
+          background: {
+            default: darkMode ? "#000" : "#fff",
+            paper: darkMode ? "#000" : "#fff",
+          },
+          text: {
+            primary: darkMode ? "#fff" : "#000",
+          },
         },
-        text: {
-          primary: darkMode ? '#fff' : '#000',
-        },
-      },
-    }), 
+      }),
     [darkMode]
   );
 
@@ -30,9 +38,9 @@ function Theme() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container>
-        <Paper style={{ padding: '16px', minHeight: '100vh' }}>
+        <Paper style={{ padding: "16px", minHeight: "100vh" }}>
           <Typography variant="h4" gutterBottom>
-            {darkMode ? 'Dark Mode' : 'Light Mode'}
+            {darkMode ? "Dark Mode" : "Light Mode"}
           </Typography>
           <Switch checked={darkMode} onChange={handleToggle} />
         </Paper>
